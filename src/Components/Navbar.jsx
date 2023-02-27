@@ -39,6 +39,9 @@ export default function Navbar() {
               <li>
               <Link to={`/User`}>Profile</Link>
               </li>
+              <li>
+              <Link to={`/asd`}>Log out</Link>
+              </li>
             </ul>
             </div>
       </nav>

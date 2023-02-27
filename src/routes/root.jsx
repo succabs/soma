@@ -4,11 +4,12 @@ import Navbar from "../Components/Navbar";
 export default function Root() {
     return (
       <>  
-        <div id="navbar">
+      
         <Navbar />
-        </div>
-        <div id="content"></div>
+        
+        <div id="outlet">
         <Outlet />
+        </div>
       </>
     );
   }
