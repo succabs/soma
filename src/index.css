@@ -95,17 +95,19 @@ h2,h3,h4,h5,h6{
 }
 .navigation {
   height: 100%;
-  width: 25%;
+  min-width: 25%;
+  max-width: 25%;
   padding: 1rem 2rem;
   border-right: solid 1px #7967A3;
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 .brand-name {
   text-decoration: none;
   color: black;
   font-size: 1.3rem;
-  margin-left: 1rem;
+  margin-left: 0rem;
 }
 .navigation ul {
   display: block;
@@ -127,6 +129,8 @@ h2,h3,h4,h5,h6{
   .navigation {
     position:fixed;
     width: 100%;
+    min-width: 100%;
+    max-width: 100%;
     height: 20%;
     top: 80%;
     display: flex;
@@ -162,3 +166,16 @@ h2,h3,h4,h5,h6{
 
 
 }
+button{
+
+  outline: none;
+  padding: 0 16px;
+  background-color: #0070d2;
+  border-radius: 0.25rem;
+  border: 1px solid #0070d2;
+  color: #fff;
+  font-size: 13px;
+  line-height: 30px;
+  font-weight: 400;
+  text-align: center;
+  }

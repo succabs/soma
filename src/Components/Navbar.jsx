@@ -16,13 +16,13 @@ export default function Navbar(props) {
               <Link to={`/User`}>Profile</Link>
               </li>
           </ul>
-          <li>
+          
           {props.isSignedIn ? (
-            <button onClick={props.signout}>Log Out</button>
+            <button className="button" onClick={props.signout}>Log Out</button>
           ) : (
-            <button onClick={props.signin}>Log In</button>
+            <button className="button" onClick={props.signin}>Log In</button>
           )}
-        </li>
+        
               
             </div>
       </nav>
