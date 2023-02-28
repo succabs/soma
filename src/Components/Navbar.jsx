@@ -8,6 +8,17 @@ export default function Navbar(props) {
         SOMA
       </a>
       <div>
+
+      <div class="search">
+        <input
+            type="text"
+            className="searchTerm"
+            placeholder="Search.."
+            name="s" 
+        />
+        <button type="submit" className="searchButton">
+        <i class="fa fa-search"></i></button>
+        </div>
           <ul>
               <li>
               <Link to={`/home`}>Home</Link>
@@ -18,9 +29,9 @@ export default function Navbar(props) {
           </ul>
           
           {props.isSignedIn ? (
-            <button className="button" onClick={props.signout}>Log Out</button>
+            <button className="buttonLog" onClick={props.signout}>Log Out</button>
           ) : (
-            <button className="button" onClick={props.signin}>Log In</button>
+            <button className="buttonLog" onClick={props.signin}>Log In</button>
           )}
         
               

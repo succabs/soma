@@ -111,12 +111,13 @@ h2,h3,h4,h5,h6{
 }
 .navigation ul {
   display: block;
-  padding: 0;
+  padding: 1rem;
   width: 100%;
 }
 .navigation li {
   list-style-type: none;
   margin: 0 1rem;
+  padding: 0rem;
 }
 .navigation li a {
   text-decoration: none;
@@ -160,13 +161,12 @@ h2,h3,h4,h5,h6{
     text-align: center;
     display: inline;
     margin: 0;
-    padding: 1rem;
   }
 
 
 
 }
-button{
+.buttonLog{
 
   outline: none;
   padding: 0 16px;
@@ -179,3 +179,38 @@ button{
   font-weight: 400;
   text-align: center;
   }
+
+  .search {
+    width: 100%;
+    position: relative;
+    display: flex;
+    padding-top: 1rem;
+  }
+  
+  .searchTerm {
+    width: 100%;
+    border: 3px solid #0070d2;
+    border-right: none;
+    padding: 5px;
+    height: 36px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
+  }
+  
+  .searchTerm:focus{
+    color: #0070d2;
+  }
+  
+  .searchButton {
+    width: 40px;
+    height: 36px;
+    border: 1px solid #0070d2;
+    background: #0070d2;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
