@@ -24,6 +24,28 @@ export default function User() {
             </div>
             <div className="post">
             <p>This is a post on my page.</p>
+            </div>            <div className="post">
+            <p>This is a post on my page.</p>
+            </div>            <div className="post">
+            <p>This is a post on my page.</p>
+            </div>            <div className="post">
+            <p>This is a post on my page.</p>
+            </div>            <div className="post">
+            <p>This is a post on my page.</p>
+            </div>            <div className="post">
+            <p>This is a post on my page.</p>
+            </div>            <div className="post">
+            <p>This is a post on my page.</p>
+            </div>            <div className="post">
+            <p>This is a post on my page.</p>
+            </div>            <div className="post">
+            <p>This is a post on my page.</p>
+            </div>            <div className="post">
+            <p>This is a post on my page.</p>
+            </div>            <div className="post">
+            <p>This is a post on my page.</p>
+            </div>            <div className="post">
+            <p>This is a post on my page.</p>
             </div>
             </div>
             </div>
