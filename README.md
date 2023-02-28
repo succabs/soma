@@ -5,12 +5,12 @@
  
  The point of this project is to learn more about React, fill my portfolio and create a working front-end of a basic social media app. Created using various tutorials and reading docs.
 
- # Install & run (I think, haven't tested yet)
+ # Install & run 
 
-clone repository
+1. clone repository
 
-npm i
+2. npm install
 
-npm run dev
+3. npm run dev
 
 
