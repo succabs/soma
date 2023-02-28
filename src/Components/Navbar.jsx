@@ -18,9 +18,9 @@ export default function Navbar(props) {
           </ul>
           <li>
           {props.isSignedIn ? (
-            <button onClick={props.signout}>Sign Out</button>
+            <button onClick={props.signout}>Log Out</button>
           ) : (
-            <button onClick={props.signin}>Sign In</button>
+            <button onClick={props.signin}>Log In</button>
           )}
         </li>
               

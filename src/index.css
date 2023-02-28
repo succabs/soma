@@ -28,6 +28,12 @@ h2,h3,h4,h5,h6{
   color:#A895C8;
 }
 
+.frontPageGreetings {
+  width: 100%;
+  display:block;
+  position: relative;
+}
+
 #root {
   height: 100%;
   width: 100%;
