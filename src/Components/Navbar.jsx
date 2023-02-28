@@ -1,7 +1,7 @@
 import {Link } from "react-router-dom";
 import "../index.css"
 
-export default function Navbar() {
+export default function Navbar(props) {
     return (
       <nav  className="navigation">
               <a href="/" className="brand-name">
@@ -15,10 +15,15 @@ export default function Navbar() {
               <li>
               <Link to={`/User`}>Profile</Link>
               </li>
-              <li>
-              <Link to={`/asd`}>Log out</Link>
-              </li>
           </ul>
+          <li>
+          {props.isSignedIn ? (
+            <button onClick={props.signout}>Sign Out</button>
+          ) : (
+            <button onClick={props.signin}>Sign In</button>
+          )}
+        </li>
+              
             </div>
       </nav>
       )
