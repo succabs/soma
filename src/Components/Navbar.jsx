@@ -1,21 +1,14 @@
 import {Link } from "react-router-dom";
 import "../index.css"
-import { useState } from "react";
 
 export default function Navbar() {
-  const [isNavOpen, setIsNavOpen] = useState(false);
-
-  const toggleNav = () => {
-    setIsNavOpen(!isNavOpen);
-  };
     return (
       <nav  className="navigation">
               <a href="/" className="brand-name">
         SOMA
       </a>
-      <div className={`navbar-collapse ${isNavOpen ? "show" : ""}`}>
-
-<ul>
+      <div>
+          <ul>
               <li>
               <Link to={`/home`}>Home</Link>
               </li>
@@ -25,7 +18,7 @@ export default function Navbar() {
               <li>
               <Link to={`/asd`}>Log out</Link>
               </li>
-            </ul>
+          </ul>
             </div>
       </nav>
       )
