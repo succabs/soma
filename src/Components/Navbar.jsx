@@ -9,7 +9,7 @@ export default function Navbar(props) {
       </a>
       <div>
 
-      <div class="search">
+      <div className="search">
         <input
             type="text"
             className="searchTerm"
@@ -17,7 +17,7 @@ export default function Navbar(props) {
             name="s" 
         />
         <button type="submit" className="searchButton">
-        <i class="fa fa-search"></i></button>
+        <i className="fa fa-search"></i></button>
         </div>
           <ul>
               <li>
