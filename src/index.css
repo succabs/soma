@@ -4,6 +4,12 @@
   padding: 0;
 }
 
+.darken-background {
+  background-color: rgba(0, 0, 0, 0.3); /* Use an RGBA color to make the background semi-transparent */
+  transition: background-color 0.2s ease-out; /* Add a transition effect to make the change smooth */
+}
+
+
 body {
   font-family: Consolas, source-code-pro, Menlo, Monaco,  "Courier New",
     monospace;
@@ -16,8 +22,8 @@ body {
   height: 100%;
   margin: 0;
   line-height: 1.5;
-  color: #4C3A6B;
-  background-color: #F6F6F6;
+  color: #333333;
+  background-color: #F2F2F2;
 }
 
 h1 {
@@ -25,7 +31,7 @@ h1 {
 }
 
 h2,h3,h4,h5,h6{
-  color:#A895C8;
+  color:#444444;
 }
 
 .frontPageGreetings {
@@ -53,7 +59,6 @@ h2,h3,h4,h5,h6{
   display: flex;
   flex-direction: row;
   padding-left: 1rem;
-  border-left: solid 1px #7967A3;
 
 }
 .userPage {
@@ -72,7 +77,7 @@ h2,h3,h4,h5,h6{
   position: relative;
 }
 .userGreetings {
-  border-bottom: solid 1px #7967A3;
+  border-bottom: solid 1px #B2B2B2;
   display: block;
   padding: 1rem 1rem;
   width: 100%;
@@ -88,21 +93,21 @@ h2,h3,h4,h5,h6{
 
 .post {
   padding: 1rem 1rem;
-  border-bottom: solid 1px #7967A3;
+  border-bottom: solid 1px #B2B2B2;
 }
 .navigation {
   height: 100%;
   min-width: 25%;
   max-width: 25%;
   padding: 1rem 2rem;
-  border-right: solid 1px #7967A3;
+  border-right: solid 1px #B2B2B2;
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 .brand-name {
   text-decoration: none;
-  color: black;
+  color: #0066CC;
   font-size: 1.3rem;
   margin-left: 0rem;
 }
@@ -119,6 +124,7 @@ h2,h3,h4,h5,h6{
 .navigation li a {
   text-decoration: none;
   display: block;
+  color: #0066CC;
   width: 100%;
 }
 
@@ -139,7 +145,6 @@ h2,h3,h4,h5,h6{
 
   .brand-name {
     text-decoration: none;
-    color: black;
     font-size: 1.3rem;
     margin-left: 1rem;
     display: none;
@@ -151,7 +156,7 @@ h2,h3,h4,h5,h6{
     justify-content: center;
     width: 100%;
     height: calc(100vh);
-    border-top: 1px solid #D1C8E5;
+    border-top: 1px solid #B2B2B2;
   }
   .navigation li {
     
@@ -167,9 +172,9 @@ h2,h3,h4,h5,h6{
 
   outline: none;
   padding: 0 16px;
-  background-color: #0070d2;
+  background-color: #0066CC;
   border-radius: 0.25rem;
-  border: 1px solid #0070d2;
+  border: 1px solid #0066CC;
   color: #fff;
   font-size: 13px;
   line-height: 30px;
@@ -186,7 +191,7 @@ h2,h3,h4,h5,h6{
   
   .searchTerm {
     width: 100%;
-    border: 3px solid #0070d2;
+    border: 3px solid #0066CC;
     border-right: none;
     padding: 5px;
     height: 36px;
@@ -196,14 +201,14 @@ h2,h3,h4,h5,h6{
   }
   
   .searchTerm:focus{
-    color: #0070d2;
+    color: #0066CC;
   }
   
   .searchButton {
     width: 40px;
     height: 36px;
-    border: 1px solid #0070d2;
-    background: #0070d2;
+    border: 1px solid #0066CC;
+    background: #0066CC;
     text-align: center;
     color: #fff;
     border-radius: 0 5px 5px 0;

@@ -6,7 +6,7 @@ export default function Root(props) {
     if (props.isSignedIn) {
         return (
             <>  
-              <Navbar signout={props.signout} signin={props.signin} isSignedIn={props.isSignedIn}/>   
+              <Navbar signout={props.signout} signin={props.signin} isSignedIn={props.isSignedIn}userId={props.userId}/>   
               <Outlet />
             </>
           );

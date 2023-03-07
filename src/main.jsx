@@ -8,23 +8,29 @@ import User from "./routes/user";
 import ErrorPage from "./routes/error-page";
 import Login from "./routes/login";
 import Protected from "./Components/Protected";
+import { users } from "./assets/users";
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(null);
-
-  const signin = () => {
+  const [userId, setUserId] = useState(null);
+  
+  const signin = (userId) => {
     setIsSignedIn(true);
-    console.log("sisassa");
+    setUserId(userId);
+     // Fetch user data from the JSON file
   };
+  
   const signout = () => {
     setIsSignedIn(false);
-    console.log("ulkona");
+    setUserId(null);
   };
+
+
 
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Root signin={signin} signout={signout} isSignedIn={isSignedIn}/>,
+      element: <Root signin={signin} signout={signout} isSignedIn={isSignedIn} userId={userId}/>,
       errorElement: <ErrorPage />,
       children: [
         {

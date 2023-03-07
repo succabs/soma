@@ -1,8 +1,12 @@
 export default function Home() {
     return (
 
-          <div>
-            <p>This is a greetings page that gently tells you to sign in to use the site.</p>
+          <div className="post">
+            <p>Welcome to Soma, a social media application that pays homage to the early days of social networking.
+            With a focus on authentic connections and shared interests, we aim to bring back the joy and simplicity of 
+            social media before it became inundated with ads and algorithms. Come rediscover the roots of social media with us.
+            </p>
+            <p>Join us and rediscover the joy of social media!</p>
           </div>
     );
   }
