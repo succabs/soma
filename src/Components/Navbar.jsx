@@ -14,11 +14,16 @@ export default function Navbar(props) {
         ReadPostShare
       </a>
       <div>
-
+      {props.isSignedIn ? (
+        <div> 
+                      <div>
+            <p>You are logged in as user {props.userId}</p>
+            <button className="buttonLog" onClick={() => {props.signout(); handleClick();}}>Log Out</button>
+            </div>
         <div>
           <p>Notifications</p>
         </div>
-
+        
       <div className="search">
         <input
             type="text"
@@ -28,6 +33,7 @@ export default function Navbar(props) {
         />
         <button type="submit" className="searchButton">
         <i className="fa fa-search"></i></button>
+        
         </div>
           <ul>
               <li>
@@ -43,11 +49,6 @@ export default function Navbar(props) {
               <Link to={`/home`}>Messages</Link>
               </li>
           </ul>
-          
-          {props.isSignedIn ? (
-            <div>
-            <p>You are logged in as user {props.userId}</p>
-            <button className="buttonLog" onClick={() => {props.signout(); handleClick();}}>Log Out</button>
             </div>
           ) : (
             <div>

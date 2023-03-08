@@ -1,4 +1,3 @@
-import { messages } from "../assets/messages";
 import { users } from "../assets/users";
 
 export default function Home() {
@@ -6,10 +5,8 @@ export default function Home() {
 const storedMessages = localStorage.getItem('messages');
 
 // Parse the JSON string back to an object
-const messages1 = JSON.parse(storedMessages);
-
-// Log the messages to the console
-console.log(messages1);
+const messages = JSON.parse(storedMessages);
+messages.reverse();
     return (
 
       <div>

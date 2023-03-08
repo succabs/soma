@@ -4,9 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { messages } from "../assets/messages";
 
 function NewPost() {
-  const { currentUser } = useOutletContext();
   const navigate = useNavigate();
-
+  const { userId } = useOutletContext();
   const [formState, setFormState] = useState({
     message: '',
     location: '',
@@ -23,7 +22,7 @@ function NewPost() {
     e.preventDefault();
     const message = {
       messageId: messages.length + 1, 
-      id: currentUser,
+      id: parseInt(userId),
       message: formState.message,
       location: formState.location,
       time: new Date().toLocaleString('en-US', { hour12: false }),
@@ -64,13 +63,4 @@ const saveMessages = () => {
       console.log('Error saving messages to localStorage', err);
     }
   };
-  // Get items from localStorage
-const storedMessages = localStorage.getItem('messages');
-
-// Parse the JSON string back to an object
-const messages1 = JSON.parse(storedMessages);
-
-// Log the messages to the console
-console.log(messages1);
-
 export default NewPost;
