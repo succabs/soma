@@ -34,11 +34,6 @@ h2,h3,h4,h5,h6{
   color:#444444;
 }
 
-.frontPageGreetings {
-  width: 100%;
-  display:block;
-  position: relative;
-}
 
 #root {
   height: 100%;
@@ -53,6 +48,14 @@ h2,h3,h4,h5,h6{
   justify-content: center;
   width: 100%;
 }
+
+.frontPageGreetings {
+  width: 100%;
+  display:block;
+  position: relative;
+  padding: 2rem 5rem;
+}
+
 
 .outlet{
   width: 100%;
@@ -145,7 +148,6 @@ h2,h3,h4,h5,h6{
   display: flex;
   flex-direction: row;
   font-size: 12px;
-  justify-content: center;
   margin-top: 1rem;
   border: 1px solid #0066CC;
   border-radius: 0.25rem;
@@ -153,6 +155,7 @@ h2,h3,h4,h5,h6{
 .navUserInfo img {
   max-width: 46px;
   max-height: 46px;
+  text-align: left;  
 }
 .navUserInfo p {
   padding: 1rem 0;
