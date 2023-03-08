@@ -8,11 +8,12 @@ export default function ErrorPage() {
   return (
     <div id="error-page">
       <h1>Oops!</h1>
-      <p>Sorry, an unexpected error has occurred.</p>
+      <p>We are terribly sorry, an unexpected error has occurred.</p>
       <p>Error message:
         <i> {error.statusText || error.message}</i>
       </p>
-      <p>Click <Link to={`/home`}>here</Link> to go back to front page.</p>
+      <p>Click <Link to={`/greetings`}>here</Link> to go back to front page.</p>
+      <p>If this message persists, consider contacting us so we can see what the error is about.</p>
 
     </div>
   );

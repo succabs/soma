@@ -6,7 +6,9 @@ const storedMessages = localStorage.getItem('messages');
 
 // Parse the JSON string back to an object
 const messages = JSON.parse(storedMessages);
-messages.reverse();
+if (messages.length > 0){
+  messages.reverse();
+} 
     return (
       <div className="home">
       <div className="posts">

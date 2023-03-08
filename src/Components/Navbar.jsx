@@ -1,30 +1,31 @@
 import {Link } from "react-router-dom";
 import "../index.css"
+import { users } from "../assets/users";
 
 export default function Navbar(props) {
   const handleSignIn = (event) => {
     event.preventDefault();
     const userId = document.getElementById("userIdInput").value;
+    if (isNaN(userId) || userId < 1 || userId > 1000) {
+      alert('Invalid username');
+      return;
+    }
     props.signin(userId);
     handleClick();
   }
+  const userId  = props.userId;
+  
+  const userData = users.find(user => user.id === parseInt(userId));
+
     return (
       <nav  className="navigation">
-              <a href="/" className="brand-name">
-        ReadPostShare
-      </a>
+              <h1 className="brand-name">
+              <Link to={`/`}>ReadPostShare</Link>
+      </h1>
       <div>
       {props.isSignedIn ? (
         <div> 
-                      <div>
-            <p>You are logged in as user {props.userId}</p>
-            <button className="buttonLog" onClick={() => {props.signout(); handleClick();}}>Log Out</button>
-            </div>
-        <div>
-          <p>Notifications</p>
-        </div>
-        
-      <div className="search">
+                <div className="search">
         <input
             type="text"
             className="searchTerm"
@@ -35,6 +36,18 @@ export default function Navbar(props) {
         <i className="fa fa-search"></i></button>
         
         </div>
+                      <div className="navUserInfo">
+                      <img src={userData.avatar} alt="Profile picture" />
+            <p className="navName">{props.userId}</p>
+            <p>(<Link to={`/User`}>view profile</Link>)</p>
+           <p>(<a href="#" onClick={() => {props.signout(); handleClick();}}>log out</a>)</p> 
+            
+            </div>
+        <div className="navNotificationInfo">
+          <p>Notifications</p>
+        </div>
+        
+
           <ul>
               <li>
               <Link to={`/home`}>Home</Link>

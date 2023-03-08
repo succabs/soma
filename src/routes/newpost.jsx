@@ -33,7 +33,7 @@ function NewPost() {
       message: '',
       location: '',
     });
-    navigate('/');
+    navigate('/home');
   };
 
   return (
