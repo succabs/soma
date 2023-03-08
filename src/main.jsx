@@ -7,6 +7,7 @@ import Home from "./routes/home";
 import User from "./routes/user";
 import ErrorPage from "./routes/error-page";
 import Login from "./routes/login";
+import Newpost from "./routes/newpost";
 import Protected from "./Components/Protected";
 import { users } from "./assets/users";
 
@@ -17,7 +18,7 @@ function App() {
   const signin = (userId) => {
     setIsSignedIn(true);
     setUserId(userId);
-     // Fetch user data from the JSON file
+     console.log(userId);
   };
   
   const signout = () => {
@@ -42,6 +43,14 @@ function App() {
           element: (
             <Protected isSignedIn={isSignedIn}>
               <User />
+            </Protected>
+          ),
+        },
+        {
+          path: "newpost/",
+          element: (
+            <Protected isSignedIn={isSignedIn}>
+              <Newpost />
             </Protected>
           ),
         },

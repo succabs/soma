@@ -1,30 +1,29 @@
-import { useState } from 'react';
 import { users } from "../assets/users";
+import { useOutletContext } from "react-router-dom"
 
 export default function User() {
-  const [user, setUser] = useState(null);
-  
-  const selectRandomUser = () => {
-    const randomIndex = Math.floor(Math.random() * users.length);
-    setUser(users[randomIndex]);
-  }
+  const outletContext = useOutletContext();
+console.log(outletContext);
 
-  if (!user) {
-    selectRandomUser();
-    return <div>Loading...</div>
+  const { userId } = useOutletContext();
+  console.log(userId);
+  const userData = users.find(user => user.id === parseInt(userId));
+
+  if (!userData) {
+    return <div>User not found</div>;
   }
 
   return (
     <div className="userPage">
       <div className='userMainArea'>
       <div className="userGreetings">
-        <img src={user.avatar} alt="Profile picture" />
-        <h1>{user.fullname}</h1>
-        <p>Username: {user.username}</p>
-        <p>Email: {user.email}</p>
+        <img src={userData.avatar} alt="Profile picture" />
+        <h1>{userData.fullname}</h1>
+        <p>Username: {userData.username}</p>
+        <p>Email: {userData.email}</p>
       </div>
       <div className='post'>
-        <p>This user has not posted anything yet.</p>
+        <p>You have not posted anything yet.</p>
       </div>
       </div>
     </div>

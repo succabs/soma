@@ -11,7 +11,7 @@ export default function Navbar(props) {
     return (
       <nav  className="navigation">
               <a href="/" className="brand-name">
-        SOMA
+        ReadPostShare
       </a>
       <div>
 
@@ -32,6 +32,9 @@ export default function Navbar(props) {
           <ul>
               <li>
               <Link to={`/home`}>Home</Link>
+              </li>
+              <li>
+              <Link to={`/newpost`}>New post</Link>
               </li>
               <li>
               <Link to={`/User`}>Profile</Link>
