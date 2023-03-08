@@ -12,7 +12,7 @@ export default function ErrorPage() {
       <p>Error message:
         <i> {error.statusText || error.message}</i>
       </p>
-      <p>Click <Link to={`/greetings`}>here</Link> to go back to front page.</p>
+      <p>Click <Link to={`/`}>here</Link> to go back to front page.</p>
       <p>If this message persists, consider contacting us so we can see what the error is about.</p>
 
     </div>
