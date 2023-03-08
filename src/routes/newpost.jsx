@@ -5,7 +5,7 @@ import { messages } from "../assets/messages";
 
 function NewPost() {
   const [tags, setTags] = useState([
-    ""
+    
 ])
   const navigate = useNavigate();
   const { userId } = useOutletContext();
@@ -42,6 +42,7 @@ function NewPost() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!window.confirm('Are you sure you want to post this?')) return;
     const message = {
       messageId: messages.length + 1, 
       id: parseInt(userId),
@@ -73,10 +74,10 @@ function NewPost() {
                     <span className="close" onClick={() => removeTag(index)}>&times;</span>
                 </div>
             )) }
-            <input onKeyDown={handleKeyDown} type="text" className="tags-input" placeholder="Type keywords" />
+            <input onKeyDown={handleKeyDown} type="text" className="tags-input" placeholder="Type keywords, separate them with space" />
         </div>
         <br />
-        <button type="submit">Post</button>
+        <button className='buttonLog' type="submit">Post</button>
       </form>
 
     </div>
