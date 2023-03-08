@@ -8,8 +8,8 @@ const storedMessages = localStorage.getItem('messages');
 const messages = JSON.parse(storedMessages);
 messages.reverse();
     return (
-
-      <div>
+      <div className="home">
+      <div className="posts">
         {messages.map((data, key) => {
           return (
             <div key={key}>
@@ -24,6 +24,10 @@ messages.reverse();
           );
         })}
       </div>
+      <div className="homeSide">
+        <p>content</p>
+      </div>
+      </div>
     );
   }
 
@@ -33,11 +37,12 @@ messages.reverse();
     const name = user ? user.fullname : 'Unknown User';
     return (
       <div className="post">
-
+          <img src={user.avatar} alt="Profile picture" />
               <h5>{name} says: </h5>
               <h5> {message}</h5>
-              <h4> {time}</h4>
-              <p> {location}</p>
+              <p>{time} at {location}</p>
+              <p>like or dislike</p>
+              <p>0 comments</p>
       </div>
     );
   };

@@ -53,14 +53,17 @@ h2,h3,h4,h5,h6{
   justify-content: center;
   width: 100%;
 }
-#outlet{
+
+.outlet{
   width: 100%;
   position: relative;
   display: flex;
   flex-direction: row;
   padding-left: 1rem;
+  padding-right: 1rem;
 
 }
+
 .userPage {
   padding: 0rem 0rem;
   width: 100%;
@@ -76,23 +79,29 @@ h2,h3,h4,h5,h6{
   flex-direction: column;
   position: relative;
 }
-.userGreetings {
-  border-bottom: solid 1px #B2B2B2;
-  display: block;
-  padding: 1rem 1rem;
+
+.home{
   width: 100%;
-  
+  display: flex;
+  flex-direction: row;
 
 }
-.userGreetings img {
-  max-height: 120px;
-  float: right;
-  display: inline;
+
+.posts {
+  width: 75%;
+  padding-right: 1rem;
+
+}
+
+.homeSide{
+  width: 25%;
+  border-left: solid 1px #B2B2B2;
 
 }
 
 .post {
   padding: 1rem 1rem;
+
   border-bottom: solid 1px #B2B2B2;
 }
 .navigation {
@@ -104,6 +113,7 @@ h2,h3,h4,h5,h6{
   display: flex;
   flex-direction: column;
   text-align: center;
+  
 }
 .brand-name {
   text-decoration: none;
@@ -128,46 +138,6 @@ h2,h3,h4,h5,h6{
   width: 100%;
 }
 
-@media screen and (max-width: 768px) {
-
-  .navigation {
-    position:fixed;
-    width: 100%;
-    min-width: 100%;
-    max-width: 100%;
-    height: 20%;
-    top: 80%;
-    display: flex;
-    flex-direction: column;
-    z-index: 999;
-    background-color: white;
-  }
-
-  .brand-name {
-    text-decoration: none;
-    font-size: 1.3rem;
-    margin-left: 1rem;
-    display: none;
-  }
- 
-  .navigation ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    height: calc(100vh);
-    border-top: 1px solid #B2B2B2;
-  }
-  .navigation li {
-    
-    text-align: center;
-    display: inline;
-    margin: 0;
-  }
-
-
-
-}
 .buttonLog{
 
   outline: none;

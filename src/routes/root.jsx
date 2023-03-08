@@ -7,8 +7,10 @@ export default function Root(props) {
     if (props.isSignedIn) {
         return (
             <>  
-              <Navbar signout={props.signout} signin={props.signin} isSignedIn={props.isSignedIn}userId={props.userId}/>   
+              <Navbar signout={props.signout} signin={props.signin} isSignedIn={props.isSignedIn}userId={props.userId}/> 
+              <div className="outlet">
               <Outlet context={{ userId }} />
+              </div>  
             </>
           );
         }
@@ -16,8 +18,9 @@ export default function Root(props) {
     return (
       <>  
         <Navbar signout={props.signout} signin={props.signin} isSignedIn={props.isSignedIn}/>  
+        <div className="outlet">
         <Greetings />   
-           
+        </div>
       </>
     );
   }
