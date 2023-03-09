@@ -104,12 +104,54 @@ h6 {
   width: 25%;
   border-left: solid 1px #b2b2b2;
 }
-
 .post {
-  padding: 1rem 1rem;
-
+  display: flex;
+  align-items: flex-start;
+  padding: 1rem;
   border-bottom: solid 1px #b2b2b2;
 }
+
+.post img {
+  margin-right: 1rem;
+}
+
+.post-content {
+  flex: 1;
+}
+
+.post-content h5 {
+  margin-bottom: 0;
+}
+
+.post-hashtags {
+  margin-top: 0.5rem;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: left;
+  margin-top: 0.5rem;
+  color: #666;
+}
+
+.post-actions button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.post-actions button:focus {
+  outline: none;
+}
+
+.post-actions button:hover {
+  color: #333;
+}
+
+.post-actions span {
+  margin-right: 1rem;
+}
+
 .navigation {
   height: 100%;
   min-width: 25%;
@@ -266,9 +308,11 @@ h6 {
 }
 
 .tags-input {
+  font-size: 16px;
   flex-grow: 1;
   flex-direction: column;
   padding: 0.5em 0;
   border: none;
   outline: none;
+  background-color: #f8f8f8;
 }
