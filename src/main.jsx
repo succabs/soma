@@ -13,24 +13,29 @@ import Protected from "./Components/Protected";
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(null);
   const [userId, setUserId] = useState(null);
-  
+
   const signin = (userId) => {
     setIsSignedIn(true);
     setUserId(userId);
-     console.log(userId);
+    console.log(userId);
   };
-  
+
   const signout = () => {
     setIsSignedIn(false);
     setUserId(null);
   };
 
-
-
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Root signin={signin} signout={signout} isSignedIn={isSignedIn} userId={userId}/>,
+      element: (
+        <Root
+          signin={signin}
+          signout={signout}
+          isSignedIn={isSignedIn}
+          userId={userId}
+        />
+      ),
       errorElement: <ErrorPage />,
       children: [
         {
@@ -55,7 +60,7 @@ function App() {
         },
         {
           path: "login/",
-          element: <Login/>,
+          element: <Login />,
         },
       ],
     },
@@ -68,6 +73,4 @@ function App() {
   );
 }
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-<App />
-);
+root.render(<App />);
