@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function SearchBar() {
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState([]);
 
   const handleSearch = (e) => {
-    var lowerCase = e.target.value.toLowerCase();
-    setSearchTerm(lowerCase);
+    const value = e.target.value;
+    setSearchTerm(value);
 
     // Search for messages in local storage
     const messages = JSON.parse(localStorage.getItem("messages")) || [];
@@ -17,6 +17,28 @@ export default function SearchBar() {
     );
     setResults(filteredMessages);
   };
+
+  useEffect(() => {
+    // Listen for changes to localStorage
+    const handleStorageChange = (e) => {
+      if (e.key === "messages") {
+        // Rerun the search and update the results
+        const messages = JSON.parse(e.newValue) || [];
+        const filteredMessages = messages.filter(
+          (message) =>
+            message.message.includes(searchTerm) ||
+            message.hashtags.some((tag) => tag.includes(searchTerm))
+        );
+        setResults(filteredMessages);
+      }
+    };
+    window.addEventListener("storage", handleStorageChange);
+
+    // Clean up the event listener on unmount
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, [searchTerm]);
 
   return (
     <div className="search-container">
