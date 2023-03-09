@@ -1,12 +1,23 @@
 import { users } from "../assets/users";
+import React, { useState } from "react";
 import { useOutletContext } from "react-router-dom";
+import { FaTimes } from "react-icons/fa";
 
 export default function User() {
-  const outletContext = useOutletContext();
-  console.log(outletContext);
+  const [messages, setMessages] = useState(() => {
+    const storedMessages = localStorage.getItem("messages");
+    return storedMessages ? JSON.parse(storedMessages) : [];
+  });
+
+  const handleDelete = (messageId) => {
+    const updatedMessages = messages.filter(
+      (message) => message.messageId !== messageId
+    );
+    localStorage.setItem("messages", JSON.stringify(updatedMessages));
+    setMessages(updatedMessages);
+  };
 
   const { userId } = useOutletContext();
-  console.log(userId);
   const userData = users.find((user) => user.id === parseInt(userId));
 
   if (!userData) {
@@ -22,10 +33,76 @@ export default function User() {
           <p>Username: {userData.username}</p>
           <p>Email: {userData.email}</p>
         </div>
-        <div className="post">
-          <p>You have not posted anything yet.</p>
-        </div>
+        {messages.map((message) => {
+          if (message.id === parseInt(userId)) {
+            return (
+              <div className="post" key={message.messageId}>
+                <Message
+                  messageId={message.messageId}
+                  id={message.id}
+                  message={message.message}
+                  time={message.time}
+                  hashtags={message.hashtags}
+                  onDelete={handleDelete}
+                />
+              </div>
+            );
+          } else {
+            return null;
+          }
+        })}
       </div>
     </div>
   );
 }
+
+const Message = ({ messageId, id, message, time, hashtags, onDelete }) => {
+  if (!id) return <div />;
+  const { userId } = useOutletContext();
+  const user = users.find((user) => user.id === id);
+  const name = user ? user.fullname : "Unknown User";
+  const canDelete = parseInt(userId) === id;
+  const handleDeleteClick = () => {
+    onDelete(messageId);
+  };
+
+  return (
+    <div className="post">
+      {canDelete && (
+        <button onClick={handleDeleteClick} className="delete">
+          <FaTimes />
+        </button>
+      )}
+      <img src={user.avatar} alt="Profile picture" />
+      <div className="post-content">
+        <h5>{name} says:</h5>
+        <p>{message}</p>
+        {hashtags && hashtags.length > 0 ? (
+          <p>
+            {hashtags.map((tag, index) => (
+              <span key={index}>#{tag.trim()} </span>
+            ))}
+          </p>
+        ) : (
+          <p>No hashtags</p>
+        )}
+
+        <div className="post-actions">
+          <p>{time} </p>
+          <button>
+            <span>Like</span>
+            <span>0</span>
+          </button>
+          <button>
+            <span>Dislike</span>
+            <span>0</span>
+          </button>
+          <button>
+            <span>Comments</span>
+            <span>0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
