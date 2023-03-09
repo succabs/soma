@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "../index.css";
 import { users } from "../assets/users";
+import SearchBar from "./SearchBar";
 
 export default function Navbar(props) {
   const handleSignIn = (event) => {
@@ -14,7 +15,6 @@ export default function Navbar(props) {
     handleClick();
   };
   const userId = props.userId;
-
   const userData = users.find((user) => user.id === parseInt(userId));
 
   return (
@@ -25,17 +25,7 @@ export default function Navbar(props) {
       <div>
         {props.isSignedIn ? (
           <div>
-            <div className="search">
-              <input
-                type="text"
-                className="searchTerm"
-                placeholder="Search.."
-                name="s"
-              />
-              <button type="submit" className="searchButton">
-                <i className="fa fa-search"></i>
-              </button>
-            </div>
+            <SearchBar />
             <div className="navUserInfo">
               <img src={userData.avatar} alt="Profile picture" />
               <p className="navName">{props.userId}</p>
