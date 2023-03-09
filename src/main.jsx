@@ -62,6 +62,10 @@ function App() {
           path: "login/",
           element: <Login />,
         },
+        {
+          path: "/user/:userId",
+          element: <User />,
+        },
       ],
     },
   ]);

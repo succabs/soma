@@ -40,7 +40,7 @@ export default function Navbar(props) {
               <img src={userData.avatar} alt="Profile picture" />
               <p className="navName">{props.userId}</p>
               <p>
-                (<Link to={`/User`}>view profile</Link>)
+                (<Link to={`/user/${userId}`}>view profile</Link>)
               </p>
               <p>
                 (
@@ -66,9 +66,6 @@ export default function Navbar(props) {
               </li>
               <li>
                 <Link to={`/newpost`}>New post</Link>
-              </li>
-              <li>
-                <Link to={`/User`}>Profile</Link>
               </li>
               <li>
                 <Link to={`/home`}>Messages</Link>

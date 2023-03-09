@@ -2,6 +2,7 @@ import { users } from "../assets/users";
 import React, { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [messages, setMessages] = useState(() => {
@@ -40,9 +41,6 @@ export default function Home() {
           );
         })}
       </div>
-      <div className="homeSide">
-        <p>content</p>
-      </div>
     </div>
   );
 }
@@ -64,9 +62,16 @@ const Message = ({ messageId, id, message, time, hashtags, onDelete }) => {
           <FaTimes />
         </button>
       )}
-      <img src={user.avatar} alt="Profile picture" />
+      <Link to={`/user/${user.id}`}>
+        {" "}
+        <img src={user.avatar} alt="Profile picture" />
+      </Link>
+
       <div className="post-content">
-        <h5>{name} says:</h5>
+        <h5>
+          {" "}
+          <Link to={`/user/${user.id}`}>{name}</Link> says:
+        </h5>
         <p>{message}</p>
         {hashtags && hashtags.length > 0 ? (
           <p>
@@ -75,7 +80,7 @@ const Message = ({ messageId, id, message, time, hashtags, onDelete }) => {
             ))}
           </p>
         ) : (
-          <p>No hashtags</p>
+          <p></p>
         )}
 
         <div className="post-actions">

@@ -2,12 +2,15 @@ import { users } from "../assets/users";
 import React, { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
+import { useParams } from "react-router-dom";
 
 export default function User() {
   const [messages, setMessages] = useState(() => {
     const storedMessages = localStorage.getItem("messages");
     return storedMessages ? JSON.parse(storedMessages) : [];
   });
+  const { userId } = useParams();
+  const userData = users.find((user) => user.id === parseInt(userId));
 
   const handleDelete = (messageId) => {
     const updatedMessages = messages.filter(
@@ -17,41 +20,42 @@ export default function User() {
     setMessages(updatedMessages);
   };
 
-  const { userId } = useOutletContext();
-  const userData = users.find((user) => user.id === parseInt(userId));
-
   if (!userData) {
     return <div>User not found</div>;
   }
 
   return (
     <div className="userPage">
-      <div className="userMainArea">
-        <div className="userGreetings">
-          <img src={userData.avatar} alt="Profile picture" />
-          <h1>{userData.fullname}</h1>
-          <p>Username: {userData.username}</p>
+      <div className="userInfo">
+        <img
+          className="userAvatar"
+          src={userData.avatar}
+          alt="Profile picture"
+        />
+        <div className="userUpperInfo">
+          <h1 className="userFullName">{userData.fullname}</h1>
+          <p className="userName">@{userData.username}</p>
           <p>Email: {userData.email}</p>
         </div>
-        {messages.map((message) => {
-          if (message.id === parseInt(userId)) {
-            return (
-              <div className="post" key={message.messageId}>
-                <Message
-                  messageId={message.messageId}
-                  id={message.id}
-                  message={message.message}
-                  time={message.time}
-                  hashtags={message.hashtags}
-                  onDelete={handleDelete}
-                />
-              </div>
-            );
-          } else {
-            return null;
-          }
-        })}
       </div>
+      {messages.map((message) => {
+        if (message.id === parseInt(userId)) {
+          return (
+            <div key={message.messageId}>
+              <Message
+                messageId={message.messageId}
+                id={message.id}
+                message={message.message}
+                time={message.time}
+                hashtags={message.hashtags}
+                onDelete={handleDelete}
+              />
+            </div>
+          );
+        } else {
+          return null;
+        }
+      })}
     </div>
   );
 }

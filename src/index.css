@@ -3,17 +3,6 @@
   margin: 0;
   padding: 0;
 }
-
-.darken-background {
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.3
-  ); /* Use an RGBA color to make the background semi-transparent */
-  transition: background-color 0.2s ease-out; /* Add a transition effect to make the change smooth */
-}
-
 body {
   font-family: Consolas, source-code-pro, Menlo, Monaco, "Courier New",
     monospace;
@@ -73,20 +62,36 @@ h6 {
   height: 100%;
   margin: auto;
   margin-left: 25%;
+  margin-right: 25%;
 }
 
 .userPage {
-  padding: 0rem 0rem;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-}
-
-.userMainArea {
   width: 100%;
   height: 100%;
+}
+
+.userInfo {
   display: flex;
-  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem;
+  border-bottom: solid 1px #b2b2b2;
+  position: relative;
+}
+
+.userInfo .userAvatar {
+  margin-right: 1rem;
+}
+
+.userInfo .userUpperInfo {
+  flex: 1;
+  margin-bottom: 0;
+}
+.userInfo .userFullName {
+  display: flex;
+  justify-content: left;
+  margin-top: auto;
+  color: #666;
+  align-self: flex-end;
 }
 
 .home {
@@ -96,13 +101,22 @@ h6 {
 }
 
 .posts {
-  width: 75%;
+  width: 100%;
   padding-right: 1rem;
 }
 
-.homeSide {
-  width: 25%;
+.sideBar {
   border-left: solid 1px #b2b2b2;
+  height: 100%;
+  min-width: 25%;
+  max-width: 25%;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  right: 0;
 }
 .post {
   display: flex;
@@ -131,8 +145,9 @@ h6 {
 .post-actions {
   display: flex;
   justify-content: left;
-  margin-top: 0.5rem;
+  margin-top: auto;
   color: #666;
+  align-self: flex-end;
 }
 
 .post-actions button {
@@ -333,4 +348,14 @@ h6 {
   border: none;
   outline: none;
   background-color: #f8f8f8;
+}
+
+.darken-background {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.3
+  ); /* Use an RGBA color to make the background semi-transparent */
+  transition: background-color 0.2s ease-out; /* Add a transition effect to make the change smooth */
 }

@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../Components/Navbar";
+import Sidebar from "../Components/Sidebar";
 import Greetings from "./greetings";
 
 export default function Root(props) {
@@ -16,6 +17,7 @@ export default function Root(props) {
         <div className="outlet">
           <Outlet context={{ userId }} />
         </div>
+        <Sidebar />
       </>
     );
   }
