@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { messages } from "../assets/messages";
 
 function NewPost() {
   const [tags, setTags] = useState([]);
@@ -39,8 +38,10 @@ function NewPost() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!window.confirm("Are you sure you want to post this?")) return;
+    const messages = JSON.parse(localStorage.getItem("messages")) || [];
     const message = {
-      messageId: messages.length + 1,
+      messageId:
+        messages.length > 0 ? messages[messages.length - 1].messageId + 1 : 1,
       id: parseInt(userId),
       message: formState.message,
       hashtags: tags,
@@ -48,7 +49,7 @@ function NewPost() {
     };
     console.log(message);
     messages.push(message);
-    await saveMessages();
+    localStorage.setItem("messages", JSON.stringify(messages));
     setFormState({
       message: "",
       hashtags: [],
@@ -94,14 +95,5 @@ function NewPost() {
     </div>
   );
 }
-
-const saveMessages = () => {
-  try {
-    localStorage.setItem("messages", JSON.stringify(messages));
-    console.log("Messages saved to localStorage");
-  } catch (err) {
-    console.log("Error saving messages to localStorage", err);
-  }
-};
 
 export default NewPost;

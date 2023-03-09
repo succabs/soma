@@ -1,11 +1,27 @@
 import { users } from "../assets/users";
+import React, { useState } from "react";
+import { useOutletContext } from "react-router-dom";
+import { FaTimes } from "react-icons/fa";
 
 export default function Home() {
-  const storedMessages = localStorage.getItem("messages");
-  const messages = storedMessages ? JSON.parse(storedMessages) : [];
+  const [messages, setMessages] = useState(() => {
+    const storedMessages = localStorage.getItem("messages");
+    console.log(storedMessages);
+    return storedMessages ? JSON.parse(storedMessages) : [];
+  });
+
+  const handleDelete = (messageId) => {
+    const updatedMessages = messages.filter(
+      (message) => message.messageId !== messageId
+    );
+    localStorage.setItem("messages", JSON.stringify(updatedMessages));
+    setMessages(updatedMessages);
+  };
+
   if (messages.length > 0) {
     messages.reverse();
   }
+
   return (
     <div className="home">
       <div className="posts">
@@ -13,11 +29,12 @@ export default function Home() {
           return (
             <div key={key}>
               <Message
-                key={key}
+                messageId={data.messageId}
                 id={data.id}
                 message={data.message}
                 time={data.time}
                 hashtags={data.hashtags}
+                onDelete={handleDelete}
               />
             </div>
           );
@@ -30,12 +47,23 @@ export default function Home() {
   );
 }
 
-const Message = ({ id, message, time, hashtags }) => {
+const Message = ({ messageId, id, message, time, hashtags, onDelete }) => {
   if (!id) return <div />;
+  const { userId } = useOutletContext();
   const user = users.find((user) => user.id === id);
   const name = user ? user.fullname : "Unknown User";
+  const canDelete = parseInt(userId) === id;
+  const handleDeleteClick = () => {
+    onDelete(messageId);
+  };
+
   return (
     <div className="post">
+      {canDelete && (
+        <button onClick={handleDeleteClick} className="delete">
+          <FaTimes />
+        </button>
+      )}
       <img src={user.avatar} alt="Profile picture" />
       <div className="post-content">
         <h5>{name} says:</h5>

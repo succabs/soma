@@ -109,6 +109,7 @@ h6 {
   align-items: flex-start;
   padding: 1rem;
   border-bottom: solid 1px #b2b2b2;
+  position: relative;
 }
 
 .post img {
@@ -150,6 +151,23 @@ h6 {
 
 .post-actions span {
   margin-right: 1rem;
+}
+.post button.delete {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: red;
+}
+
+.post button.delete:focus {
+  outline: none;
+}
+
+.post button.delete:hover {
+  color: #cc0000;
 }
 
 .navigation {
