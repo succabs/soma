@@ -75,7 +75,10 @@ h6 {
   align-items: flex-start;
   padding: 1rem;
   border-bottom: solid 1px #b2b2b2;
+  border-left: solid 1px #b2b2b2;
+  border-right: solid 1px #b2b2b2;
   position: relative;
+  background-color: #dddddd;
 }
 
 .userInfo .userAvatar {
@@ -132,14 +135,18 @@ h6 {
 
 .post-content {
   flex: 1;
+  align-self: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .post-content h5 {
   margin-bottom: 0;
 }
 
-.post-hashtags {
-  margin-top: 0.5rem;
+.hashTags {
+  margin-top: 2rem;
 }
 
 .post-actions {
@@ -148,6 +155,7 @@ h6 {
   margin-top: auto;
   color: #666;
   align-self: flex-end;
+  margin-top: 0rem;
 }
 
 .post-actions button {
@@ -167,6 +175,7 @@ h6 {
 .post-actions span {
   margin-right: 1rem;
 }
+
 .post button.delete {
   background-color: transparent;
   border: none;
@@ -184,6 +193,7 @@ h6 {
 .post button.delete:hover {
   color: #cc0000;
 }
+
 
 .navigation {
   height: 100%;

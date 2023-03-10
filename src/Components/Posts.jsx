@@ -18,12 +18,21 @@ export default function Posts({ userId }) {
     messages.reverse();
   }
   const handleDelete = (messageId) => {
-    const updatedMessages = messages.filter(
-      (message) => message.messageId !== messageId
-    );
-    localStorage.setItem("messages", JSON.stringify(updatedMessages));
+    const updatedMessages = messages.filter((message) => message.messageId !== messageId);
     setMessages(updatedMessages);
+    
+    // Get all messages from localStorage
+    const storedMessages = localStorage.getItem("messages");
+    const allMessages = storedMessages ? JSON.parse(storedMessages) : [];
+  
+    // Remove the specific message with the given messageId
+    const updatedAllMessages = allMessages.filter((message) => message.messageId !== messageId);
+    
+    // Update localStorage with the updatedAllMessages array
+    localStorage.setItem("messages", JSON.stringify(updatedAllMessages));
   };
+  
+  
 
   return (
     <div className="posts">
