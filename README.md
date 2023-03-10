@@ -12,6 +12,7 @@ On the app you can:
 - Log in/out
 - Post and delete your own posts
 - Look at your own or other people's profiles
+- Search posts by content or hashtags
 
  # Install & run 
 
