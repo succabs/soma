@@ -121,6 +121,7 @@ h6 {
   top: 0;
   right: 0;
 }
+
 .post {
   display: flex;
   align-items: flex-start;
@@ -193,7 +194,6 @@ h6 {
 .post button.delete:hover {
   color: #cc0000;
 }
-
 
 .navigation {
   height: 100%;

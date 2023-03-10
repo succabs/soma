@@ -3,6 +3,7 @@ import { users } from "../assets/users";
 import { FaTimes } from "react-icons/fa";
 import { useOutletContext } from "react-router-dom";
 import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
 
 export default function Post({
   messageId,
@@ -31,6 +32,39 @@ export default function Post({
   const [disliked, setDisliked] = useState(false);
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
+
+  useEffect(() => {
+    const storedComments = JSON.parse(
+      localStorage.getItem(`comments-${messageId}`)
+    );
+    if (storedComments) {
+      setComments(storedComments);
+    }
+
+    const storedLikes = JSON.parse(localStorage.getItem(`likes-${messageId}`));
+    if (storedLikes) {
+      setLikes(storedLikes);
+    }
+
+    const storedDislikes = JSON.parse(
+      localStorage.getItem(`dislikes-${messageId}`)
+    );
+    if (storedDislikes) {
+      setDislikes(storedDislikes);
+    }
+  }, [messageId]);
+
+  useEffect(() => {
+    localStorage.setItem(`comments-${messageId}`, JSON.stringify(comments));
+  }, [comments, messageId]);
+
+  useEffect(() => {
+    localStorage.setItem(`likes-${messageId}`, JSON.stringify(likes));
+  }, [likes, messageId]);
+
+  useEffect(() => {
+    localStorage.setItem(`dislikes-${messageId}`, JSON.stringify(dislikes));
+  }, [dislikes, messageId]);
 
   const handleLikeClick = () => {
     if (disliked) {
@@ -65,18 +99,24 @@ export default function Post({
   const handleDeleteClick = () => {
     onDelete(messageId);
   };
-
   const handleCommentSubmit = (event) => {
     event.preventDefault();
-    setComments([
-      ...comments,
-      {
-        user: users.find((user) => user.id === parseInt(userId)),
-        text: newComment,
-        time: Date.now(),
-      },
-    ]);
-    setNewComment("");
+    if (newComment.trim() !== "") {
+      const newCommentObj = {
+        id: comments.length + 1,
+        commenterId: parseInt(userId),
+        time: new Date(),
+        text: newComment.trim(),
+      };
+      setComments([...comments, newCommentObj]);
+      setNewComment("");
+    }
+  };
+  const handleCommentDelete = (commentId) => {
+    const filteredComments = comments.filter(
+      (comment) => comment.id !== commentId
+    );
+    setComments(filteredComments);
   };
   return (
     <div className="post">
@@ -104,40 +144,66 @@ export default function Post({
         ) : (
           <p className="hashTags">No hashtags</p>
         )}
-
-        <div className="post-actions">
-          <p>{formattedDateTime} </p>
-          <button onClick={handleLikeClick}>
-            <span>Like</span>
-            <span>{likes}</span>
-          </button>
-          <button onClick={handleDislikeClick}>
-            <span>Dislike</span>
-            <span>{dislikes}</span>
-          </button>
-        </div>
-        <div className="post-comments">
-          <h3>Comments</h3>
-          {comments.length === 0 && <p>No comments yet</p>}
-          {comments.map((comment, index) => (
-            <Comment
-              key={index}
-              user={comment.user}
-              time={comment.time}
-              text={comment.text}
-            />
-          ))}
+        {formattedDateTime}
+        <div className="post-footer">
+          <div className="reactions">
+            <button
+              className={'like-button ${liked ? "liked" : ""}'}
+              onClick={handleLikeClick}
+            >
+              👍 {likes}
+            </button>
+            <button
+              className={'dislike-button ${disliked ? "disliked" : ""}'}
+              onClick={handleDislikeClick}
+            >
+              👎 {dislikes}
+            </button>
+          </div>
           <form onSubmit={handleCommentSubmit}>
             <input
               type="text"
+              placeholder="Add a comment"
               value={newComment}
               onChange={(event) => setNewComment(event.target.value)}
-              placeholder="Add a comment..."
             />
-            <button type="submit" disabled={!newComment}>
-              Comment
-            </button>
+            <button type="submit">Post</button>
           </form>
+        </div>
+        <div className="comments">
+          {comments.map((comment) => (
+            <div key={comment.id} className="comment">
+              <Link to={`/user/${user.id}`}>
+                {" "}
+                <img
+                  src={
+                    users.find((user) => user.id === comment.commenterId).avatar
+                  }
+                  alt="Profile picture"
+                />
+              </Link>
+              <p>
+                <strong>
+                  {
+                    users.find((user) => user.id === comment.commenterId)
+                      .fullname
+                  }
+                </strong>{" "}
+                <span>{comment.text}</span>
+              </p>
+              <p className="comment-time">
+                {new Date(comment.time).toLocaleString()}
+              </p>
+              {comment.commenterId === parseInt(userId) && (
+                <button
+                  className="delete-comment"
+                  onClick={() => handleCommentDelete(comment.id)}
+                >
+                  <FaTimes />
+                </button>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </div>
