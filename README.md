@@ -9,9 +9,9 @@ DISCLAIMER: This is a project currently under work, so some of the functions may
 
 How to use: There are 1000 users and you can log in using any number between 1 and 1000. At start there is no content, because your localStorage is empty.
 On the app you can:
--Log in/out
--Post and delete your own posts
--Look at your own or other people's profiles
+- Log in/out
+- Post and delete your own posts
+- Look at your own or other people's profiles
 
  # Install & run 
 
