@@ -37,7 +37,6 @@ function NewPost() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!window.confirm("Are you sure you want to post this?")) return;
     const messages = JSON.parse(localStorage.getItem("messages")) || [];
     const message = {
       messageId:

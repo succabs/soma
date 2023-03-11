@@ -31,9 +31,9 @@ export default function Comment({ comment, onDelete }) {
           <Link to={`/user/${user.id}`}>{name}</Link>
         </h5>
         <p>{comment.text}</p>
-        {formattedDateTime}
+
         <div className="comment-footer">
-          <div className="comment-reactions"></div>
+          <div className="commentReactions">{formattedDateTime}</div>
           {isCommentOwner && (
             <button onClick={handleDeleteClick} className="delete">
               <FaTimes />
