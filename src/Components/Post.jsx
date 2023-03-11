@@ -39,7 +39,6 @@ export default function Post({
       localStorage.getItem(`comments-${messageId}`)
     );
     if (storedComments && storedComments.length) {
-      // add this check
       setComments(storedComments);
     }
 
@@ -62,6 +61,7 @@ export default function Post({
 
   useEffect(() => {
     localStorage.setItem(`likes-${messageId}`, JSON.stringify(likes));
+    console.log("message" + messageId + "likes" + likes);
   }, [likes, messageId]);
 
   useEffect(() => {
@@ -150,13 +150,13 @@ export default function Post({
         <div className="post-footer">
           <div className="reactions">
             <button
-              className={'like-button ${liked ? "liked" : ""}'}
+              className={`like-button ${liked ? "liked" : ""}`}
               onClick={handleLikeClick}
             >
               👍 {likes}
             </button>
             <button
-              className={'dislike-button ${disliked ? "disliked" : ""}'}
+              className={`dislike-button ${disliked ? "disliked" : ""}`}
               onClick={handleDislikeClick}
             >
               👎 {dislikes}

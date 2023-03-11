@@ -47,7 +47,6 @@ function NewPost() {
       hashtags: tags,
       time: new Date().toLocaleString("en-US", { hour12: false }),
     };
-    console.log(message);
     messages.push(message);
     localStorage.setItem("messages", JSON.stringify(messages));
     setFormState({

@@ -11,6 +11,7 @@ export default function Posts({ userId }) {
         (message) => message.id === parseInt(userId)
       );
     }
+    parsedMessages.reverse();
     return parsedMessages;
   });
 
