@@ -23,12 +23,12 @@ export default function Comment({ comment, onDelete }) {
 
   return (
     <div className="comment">
-      <Link to={"/user/${user.id}"}>
+      <Link to={`/user/${user.id}`}>
         <img src={user.avatar} alt="Profile picture" />
       </Link>
       <div className="comment-content">
         <h5>
-          <Link to={"/user/${user.id}"}>{name}</Link>
+          <Link to={`/user/${user.id}`}>{name}</Link>
         </h5>
         <p>{comment.text}</p>
         {formattedDateTime}

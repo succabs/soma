@@ -38,7 +38,8 @@ export default function Post({
     const storedComments = JSON.parse(
       localStorage.getItem(`comments-${messageId}`)
     );
-    if (storedComments) {
+    if (storedComments && storedComments.length) {
+      // add this check
       setComments(storedComments);
     }
 
