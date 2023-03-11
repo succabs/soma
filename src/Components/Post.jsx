@@ -4,6 +4,7 @@ import { FaTimes } from "react-icons/fa";
 import { useOutletContext } from "react-router-dom";
 import { Link } from "react-router-dom";
 import React, { useEffect } from "react";
+import Comment from "../Components/Comment";
 
 export default function Post({
   messageId,
@@ -22,7 +23,7 @@ export default function Post({
     hour12: false,
   });
   const formattedDate = new Date(time)
-    .toLocaleDateString("en-US")
+    .toLocaleDateString("en-GB")
     .replace(/\//g, ".");
   const formattedDateTime = `${formattedTime}, ${formattedDate}`;
 
@@ -162,75 +163,26 @@ export default function Post({
           </div>
           <form onSubmit={handleCommentSubmit}>
             <input
+              className="commentField"
               type="text"
-              placeholder="Add a comment"
+              placeholder="Comment the post.."
               value={newComment}
               onChange={(event) => setNewComment(event.target.value)}
             />
-            <button type="submit">Post</button>
+            <button className="buttonLog" type="submit">
+              Comment
+            </button>
           </form>
         </div>
         <div className="comments">
           {comments.map((comment) => (
-            <div key={comment.id} className="comment">
-              <Link to={`/user/${user.id}`}>
-                {" "}
-                <img
-                  src={
-                    users.find((user) => user.id === comment.commenterId).avatar
-                  }
-                  alt="Profile picture"
-                />
-              </Link>
-              <p>
-                <strong>
-                  {
-                    users.find((user) => user.id === comment.commenterId)
-                      .fullname
-                  }
-                </strong>{" "}
-                <span>{comment.text}</span>
-              </p>
-              <p className="comment-time">
-                {new Date(comment.time).toLocaleString()}
-              </p>
-              {comment.commenterId === parseInt(userId) && (
-                <button
-                  className="delete-comment"
-                  onClick={() => handleCommentDelete(comment.id)}
-                >
-                  <FaTimes />
-                </button>
-              )}
-            </div>
+            <Comment
+              key={comment.id}
+              comment={comment}
+              onDelete={handleCommentDelete}
+            />
           ))}
         </div>
-      </div>
-    </div>
-  );
-}
-
-function Comment({ user, time, text }) {
-  const formattedTime = new Date(time).toLocaleTimeString("en-US", {
-    hour12: false,
-  });
-  const formattedDate = new Date(time)
-    .toLocaleDateString("en-US")
-    .replace(/\//g, ".");
-  const formattedDateTime = `${formattedTime}, ${formattedDate}`;
-
-  return (
-    <div className="comment">
-      <Link to={`/user/${user.id}`}>
-        <img src={user.avatar} alt="Profile picture" className="avatar" />
-      </Link>
-      <div className="comment-content">
-        <p>
-          <Link to={`/user/${user.id}`}>{user.fullname}</Link>
-          {" - "}
-          {formattedDateTime}
-        </p>
-        <p>{text}</p>
       </div>
     </div>
   );

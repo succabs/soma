@@ -195,6 +195,55 @@ h6 {
   color: #cc0000;
 }
 
+/* COMMENTS */
+
+.comment {
+  display: flex;
+  align-items: flex-start;
+  padding: 0;
+  padding-left: 0;
+  padding-bottom: 0;
+  border: solid 1px #b2b2b2;
+  position: relative;
+}
+.comment .commentContent {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.comment button.deleteComment {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: red;
+}
+
+.comments button.delete:focus {
+  outline: none;
+}
+
+.comments button.delete:hover {
+  color: #cc0000;
+}
+
+.commentField {
+  border: 1px solid #0066cc;
+  padding: 5px;
+  height: 36px;
+  border-radius: 5px;
+  outline: none;
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.searchTerm:focus {
+  color: #0066cc;
+}
+
 .navigation {
   height: 100%;
   min-width: 25%;

@@ -23,12 +23,9 @@ export default function Posts({ userId }) {
         (message) => message.id === parseInt(userId)
       );
     }
+    parsedMessages.reverse(); // Reverse the order of messages
     setMessages(parsedMessages);
   }, [userId]);
-
-  if (messages.length > 0) {
-    messages.reverse();
-  }
 
   const handleDelete = (messageId) => {
     const updatedMessages = messages.filter(
