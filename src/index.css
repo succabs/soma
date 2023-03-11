@@ -65,6 +65,14 @@ h6 {
   margin-right: 25%;
 }
 
+.home {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+/* PROFILE PAGE */
+
 .userPage {
   width: 100%;
   height: 100%;
@@ -97,17 +105,7 @@ h6 {
   align-self: flex-end;
 }
 
-.home {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-}
-
-.posts {
-  width: 100%;
-  padding-right: 1rem;
-}
-
+/* RIGHT SIDEBAR */
 .sideBar {
   border-left: solid 1px #b2b2b2;
   height: 100%;
@@ -120,6 +118,13 @@ h6 {
   position: fixed;
   top: 0;
   right: 0;
+}
+
+/* POSTS AND POST */
+
+.posts {
+  width: 100%;
+  padding-right: 1rem;
 }
 
 .post {
@@ -244,6 +249,8 @@ h6 {
   color: #0066cc;
 }
 
+/* NAVIGATION */
+
 .navigation {
   height: 100%;
   min-width: 25%;
@@ -281,7 +288,6 @@ h6 {
   color: #0066cc;
   width: 100%;
 }
-
 .navUserInfo {
   display: flex;
   flex-direction: row;
@@ -298,13 +304,11 @@ h6 {
 .navUserInfo p {
   padding: 1rem 0;
 }
-
 .navNotificationInfo {
   margin-top: 1rem;
   border: 1px solid #0066cc;
   border-radius: 0.25rem;
 }
-
 .buttonLog {
   outline: none;
   padding: 0 16px;
@@ -318,13 +322,13 @@ h6 {
   text-align: center;
 }
 
+/* SEARCH BAR */
 .search {
   width: 100%;
   position: relative;
   display: flex;
   padding-top: 1rem;
 }
-
 .searchTerm {
   width: 100%;
   border: 3px solid #0066cc;
@@ -335,11 +339,9 @@ h6 {
   outline: none;
   color: #9dbfaf;
 }
-
 .searchTerm:focus {
   color: #0066cc;
 }
-
 .searchButton {
   width: 40px;
   height: 36px;
@@ -355,7 +357,6 @@ h6 {
   position: relative;
   width: 100%;
 }
-
 .results-list {
   position: absolute;
   top: 100%;
@@ -376,16 +377,15 @@ h6 {
 .search-container ul {
   margin-top: 0;
 }
-
 .results-list li {
   padding: 5px;
   cursor: pointer;
 }
-
 .results-list li:hover {
   background-color: #f1f1f1;
 }
 
+/* NEW POST */
 .newPost {
   padding: 1rem;
 }
@@ -412,7 +412,6 @@ h6 {
   gap: 0.5em;
   background-color: #f8f8f8;
 }
-
 .tag-item {
   background-color: rgb(218, 216, 216);
   display: inline-block;
@@ -432,7 +431,6 @@ h6 {
   font-size: 16px;
   cursor: pointer;
 }
-
 .tags-input {
   font-size: 16px;
   flex-grow: 1;
@@ -442,13 +440,20 @@ h6 {
   outline: none;
   background-color: #f8f8f8;
 }
-
+/* TO DARKEN BACKGROUND ON LOGIN/LOGOUT */
 .darken-background {
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.3
-  ); /* Use an RGBA color to make the background semi-transparent */
-  transition: background-color 0.2s ease-out; /* Add a transition effect to make the change smooth */
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: background-color 0.2s ease-out;
+}
+
+/* SMALLER SCREEN LAYOUT */
+@media (max-width: 768px) {
+  /* HIDE SIDEBAR ON MOBILE */
+  .sideBar {
+    display: none;
+  }
+  .outlet {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
